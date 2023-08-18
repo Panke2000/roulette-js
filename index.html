@@ -6,6 +6,141 @@
     <title>Roulette game</title>
 </head>
 <body>
+    <style type="text/css">
+        body {
+            background-color: #292929;
+            font-family: sans-serif;
+        }
+        .tg  {border-collapse:collapse;border-spacing:0;}
+        .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+          overflow:hidden;padding:10px 5px;word-break:normal;}
+        .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+          font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+        .tg .tg-2kb3{background-color:#013300;border-color:#f8ff00;color:#f8ff00;font-weight:bold;text-align:center;vertical-align:middle}
+        .tg .tg-cxgr{background-color:#036400;border-color:#fcff2f;color:#ffffff;text-align:center;text-decoration:none;
+          vertical-align:middle;min-width: 35px;}
+        .tg .tg-y73n{background-color:#fe0000;border-color:#fcff2f;color:#ffffff;text-align:center;vertical-align:middle;min-width: 25px;}
+        .tg .tg-n2v4{background-color:#036400;border-color:#fcff2f;color:#ffffff;font-style:italic;text-align:center;vertical-align:middle;min-width: 55px;}
+        .tg .tg-p3u6{background-color:#000000;border-color:#fcff2f;color:#ffffff;text-align:center;vertical-align:middle}
+        .tg .tg-lkk2{background-color:#013300;border-color:#fcff2f;color:#f8ff00;font-weight:bold;text-align:center;vertical-align:middle}
+        .roulette-table {
+            margin: 0 auto;
+            width: 100%;
+            max-width: 800px;
+        }
+        .roulette-table table {
+            margin: auto;
+        }
+        .history {
+            margin: 10px auto;
+            width: 100%;
+            max-width: 800px;
+            color: #b1b1b1;
+            text-align: center;
+        }
+        .active-bets {
+            margin: 10px auto;
+            width: 100%;
+            max-width: 800px;
+            color: #ffffff;
+            text-align: center;
+        }
+        </style>
+        <div class="roulette-table">
+            <table class="tg">
+                <thead>
+                  <tr>
+                    <th class="tg-cxgr" rowspan="2">00</th>
+                    <th class="tg-n2v4" colspan="6">1 - 18</th>
+                    <th class="tg-n2v4" colspan="6">19 - 36</th>
+                    <th class="tg-2kb3" colspan="2"><span style="color:#FD6864">END</span></th>
+                  </tr>
+                  <tr>
+                    <th class="tg-y73n">3</th>
+                    <th class="tg-p3u6">6</th>
+                    <th class="tg-y73n">9</th>
+                    <th class="tg-y73n">12</th>
+                    <th class="tg-p3u6">15</th>
+                    <th class="tg-y73n">18</th>
+                    <th class="tg-y73n">21</th>
+                    <th class="tg-p3u6">24</th>
+                    <th class="tg-y73n">27</th>
+                    <th class="tg-y73n">30</th>
+                    <th class="tg-p3u6">33</th>
+                    <th class="tg-y73n">36</th>
+                    <th class="tg-n2v4" colspan="2">3rd</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="tg-cxgr" rowspan="2">0</td>
+                    <td class="tg-p3u6">2</td>
+                    <td class="tg-y73n">5</td>
+                    <td class="tg-p3u6">8</td>
+                    <td class="tg-p3u6">11</td>
+                    <td class="tg-y73n">14</td>
+                    <td class="tg-p3u6">17</td>
+                    <td class="tg-p3u6">20</td>
+                    <td class="tg-y73n">23</td>
+                    <td class="tg-p3u6">26</td>
+                    <td class="tg-p3u6">29</td>
+                    <td class="tg-y73n">32</td>
+                    <td class="tg-p3u6">35</td>
+                    <td class="tg-n2v4" colspan="2">2nd</td>
+                  </tr>
+                  <tr>
+                    <td class="tg-y73n">1</td>
+                    <td class="tg-p3u6">4</td>
+                    <td class="tg-y73n">7</td>
+                    <td class="tg-p3u6">10</td>
+                    <td class="tg-p3u6">13</td>
+                    <td class="tg-y73n">16</td>
+                    <td class="tg-y73n">19</td>
+                    <td class="tg-p3u6">22</td>
+                    <td class="tg-y73n">25</td>
+                    <td class="tg-p3u6">28</td>
+                    <td class="tg-p3u6">31</td>
+                    <td class="tg-y73n">34</td>
+                    <td class="tg-n2v4" colspan="2">1st</td>
+                  </tr>
+                  <tr>
+                    <td class="tg-lkk2" rowspan="3">BET<br></td>
+                    <td class="tg-n2v4" colspan="4">1 - 12</td>
+                    <td class="tg-n2v4" colspan="4">13 - 24</td>
+                    <td class="tg-n2v4" colspan="4">25 - 36</td>
+                    <td class="tg-lkk2" colspan="2">1000</td>
+                  </tr>
+                  <tr>
+                    <td class="tg-cxgr" colspan="3">EVEN</td>
+                    <td class="tg-y73n" colspan="3">RED</td>
+                    <td class="tg-p3u6" colspan="3">BLACK</td>
+                    <td class="tg-cxgr" colspan="3">ODD</td>
+                    <td class="tg-lkk2">-</td>
+                    <td class="tg-lkk2">+</td>
+                  </tr>
+                  <tr>
+                    <td class="tg-2kb3" colspan="3"><span style="color:#FD6864">RESET</span></td>
+                    <td class="tg-2kb3" colspan="3"><span style="color:#32CB00">LOAN</span></td>
+                    <td class="tg-2kb3" colspan="3">BALANCE:</td>
+                    <td class="tg-2kb3" colspan="3">1000000</td>
+                    <td class="tg-2kb3" colspan="2">MAX</td>
+                  </tr>
+                </tbody>
+                </table>
+        </div>
+        <div class="history">
+            History: 23, 34, 12, 1, 22, 3, 00, 15, 36, 7, 18, 29
+        </div>
+        <div class="active-bets">
+            ACTIVE BETS: <span>3</span> ( <span>$195</span> )
+            <ul>
+                <li>12: <span>$10</span></li>
+                <li>25-36: <span>$25</span></li>
+                <li>RED: <span>$100</span></li>
+                <li>EVEN: <span>$50</span></li>
+                <li>2nd: <span>$10</span></li>
+            </ul>
+        </div>
     <script src="main.js"></script>
 </body>
 </html>
