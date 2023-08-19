@@ -29,14 +29,159 @@ function bet() {
         spin_result = '0';
     }
     console.log('spin result: ' + spin_result);
+    let table = document.getElementById('BETS-TABLE');
+    let row = table.insertRow(-1);
+    let cell1 = row.insertCell(0);
+    cell1.setAttribute('class', 'tg-uguq');
+    cell1.setAttribute('colspan', '2');
+    let cell2 = row.insertCell(1);
+    cell2.setAttribute('class', 'tg-uguq');
+    cell2.setAttribute('colspan', '2');
+    let spin_win = 0;
+    for (let i = 0; i < active_bets.length; i++) {
+        if (active_bets[i][0] === 'RED') {
+            if (RED.includes(spin_result)) {
+                balance_value += active_bets[i][1] * 2;
+                spin_win += active_bets[i][1] * 2;
+                document.getElementById('balance-value').innerHTML = balance_value;
+            }
+        } else if (active_bets[i][0] === 'BLACK') {
+            if (BLACK.includes(spin_result)) {
+                balance_value += active_bets[i][1] * 2;
+                spin_win += active_bets[i][1] * 2;
+                document.getElementById('balance-value').innerHTML = balance_value;
+            }
+        } else if (active_bets[i][0] === 'EVEN') {
+            if (spin_result % 2 === 0) {
+                balance_value += active_bets[i][1] * 2;
+                spin_win += active_bets[i][1] * 2;
+                document.getElementById('balance-value').innerHTML = balance_value;
+            }
+        } else if (active_bets[i][0] === 'ODD') {
+            if (spin_result % 2 !== 0) {
+                balance_value += active_bets[i][1] * 2;
+                spin_win += active_bets[i][1] * 2;
+                document.getElementById('balance-value').innerHTML = balance_value;
+            }
+        } else if (active_bets[i][0] === 'SINGLE-0') {
+            if (spin_result === '0') {
+                balance_value += active_bets[i][1] * 35;
+                spin_win += active_bets[i][1] * 35;
+                document.getElementById('balance-value').innerHTML = balance_value;
+            }
+        } else if (active_bets[i][0] === 'DOUBLE-0') {
+            if (spin_result === '00') {
+                balance_value += active_bets[i][1] * 35;
+                spin_win += active_bets[i][1] * 35;
+                document.getElementById('balance-value').innerHTML = balance_value;
+            }
+        } else if (active_bets[i][0] === '1st ROW') {
+            if (ROW_1.includes(spin_result)) {
+                balance_value += active_bets[i][1] * 3;
+                spin_win += active_bets[i][1] * 3;
+                document.getElementById('balance-value').innerHTML = balance_value;
+            }
+        } else if (active_bets[i][0] === '2nd ROW') {
+            if (ROW_2.includes(spin_result)) {
+                balance_value += active_bets[i][1] * 3;
+                spin_win += active_bets[i][1] * 3;
+                document.getElementById('balance-value').innerHTML = balance_value;
+            }
+        } else if (active_bets[i][0] === '3rd ROW') {
+            if (ROW_3.includes(spin_result)) {
+                balance_value += active_bets[i][1] * 3;
+                spin_win += active_bets[i][1] * 3;
+                document.getElementById('balance-value').innerHTML = balance_value;
+            }
+        } else if (active_bets[i][0] === '1-18') {
+            if (COL_1_18.includes(spin_result)) {
+                balance_value += active_bets[i][1] * 2;
+                spin_win += active_bets[i][1] * 2;
+                document.getElementById('balance-value').innerHTML = balance_value;
+            }
+        } else if (active_bets[i][0] === '19-36') {
+            if (COL_19_36.includes(spin_result)) {
+                balance_value += active_bets[i][1] * 2;
+                spin_win += active_bets[i][1] * 2;
+                document.getElementById('balance-value').innerHTML = balance_value;
+            }
+        } else if (active_bets[i][0] === '1-12') {
+            if (COL_1_12.includes(spin_result)) {
+                balance_value += active_bets[i][1] * 3;
+                spin_win += active_bets[i][1] * 3;
+                document.getElementById('balance-value').innerHTML = balance_value;
+            }
+        } else if (active_bets[i][0] === '13-24') {
+            if (COL_13_24.includes(spin_result)) {
+                balance_value += active_bets[i][1] * 3;
+                spin_win += active_bets[i][1] * 3;
+                document.getElementById('balance-value').innerHTML = balance_value;
+            }
+        } else if (active_bets[i][0] === '25-36') {
+            if (COL_25_36.includes(spin_result)) {
+                balance_value += active_bets[i][1] * 3;
+                spin_win += active_bets[i][1] * 3;
+                document.getElementById('balance-value').innerHTML = balance_value;
+            }
+        } else if (active_bets[i][0] === spin_result) {
+            balance_value += active_bets[i][1] * 35;
+            spin_win += active_bets[i][1] * 35;
+            document.getElementById('balance-value').innerHTML = balance_value;
+        }
+    }
+    if (spin_win > 0) {
+        alert('The spin result is: ' + spin_result + '\nYou won: $' + spin_win + ', with profit of: $' + (spin_win - active_bets_value));
+    } else {
+        alert('The spin result is: ' + spin_result + '\nYou lost: $' + active_bets_value);
+    }
+
+    active_bets_total = 0;
+    document.getElementById('ACTIVE_BETS').innerHTML = active_bets_total;
+    active_bets_value = 0;
+    document.getElementById('ACTIVE_BETS_TOTAL').innerHTML = active_bets_value;
+    active_bets = [];
+    console.log(active_bets);
+    while (table.rows.length > 1) {
+        table.deleteRow(-1);
+    }
+
 };
 
 function undo() {
-    return;
+    if (active_bets.length <= 0) {
+        return;
+    } else {
+        balance_value += active_bets[active_bets.length - 1][1];
+        document.getElementById('balance-value').innerHTML = balance_value;
+        active_bets_total--;
+        document.getElementById('ACTIVE_BETS').innerHTML = active_bets_total;
+        active_bets_value -= active_bets[active_bets.length - 1][1];
+        document.getElementById('ACTIVE_BETS_TOTAL').innerHTML = active_bets_value;
+        active_bets.pop();
+        console.log(active_bets);
+        let table = document.getElementById('BETS-TABLE');
+        table.deleteRow(-1);
+    }
 };
 
 function reset() {
-    return;
+    if (active_bets.length <= 0) {
+        return;
+    } else if (confirm('Are you sure you want to reset?')) {
+        balance_value += active_bets_value;
+        document.getElementById('balance-value').innerHTML = balance_value;
+        active_bets_total = 0;
+        document.getElementById('ACTIVE_BETS').innerHTML = active_bets_total;
+        active_bets_value = 0;
+        document.getElementById('ACTIVE_BETS_TOTAL').innerHTML = active_bets_value;
+        active_bets = [];
+        console.log(active_bets);
+        let table = document.getElementById('BETS-TABLE');
+        while (table.rows.length > 1) {
+            table.deleteRow(-1);
+        }
+    }
+        
 };
 
 function betMax() {
@@ -62,6 +207,7 @@ function betPlus() {
 function addToList(bet_type) {
     if (balance_value >= bet_value) {
         active_bets.push([bet_type, bet_value]);
+        console.log(active_bets);
         balance_value -= bet_value;
         document.getElementById('balance-value').innerHTML = balance_value;
         active_bets_value += bet_value;
@@ -172,19 +318,25 @@ function spin() {
     return Math.floor(Math.random() * 38 + 1);
 };
 
+function restart() {
+    if (confirm('Are you sure you want to restart?')) {
+        location.reload();
+    }
+};
+
 document.addEventListener("click", (e) => {
     switch (e.target.id) {
         case 'bet':
-            console.log('betting');
             bet();
             break;
         case 'undo':
-            console.log('undoing');
             undo();
             break;
         case 'reset':
-            console.log('reseting');
             reset();
+            break;
+        case 'restart':
+            restart();
             break;
         case 'bet-max':
             console.log('bet is maxed');
