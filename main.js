@@ -38,94 +38,94 @@ function bet() {
     cell2.setAttribute('class', 'tg-uguq');
     cell2.setAttribute('colspan', '2');
     let spin_win = 0;
-    for (let i = 0; i < active_bets.length; i++) {
-        if (active_bets[i][0] === 'RED') {
+    for (const element of active_bets) {
+        if (element[0] === 'RED') {
             if (RED.includes(parseInt(spin_result))) {
-                balance_value += active_bets[i][1] * 2;
-                spin_win += active_bets[i][1] * 2;
+                balance_value += element[1] * 2;
+                spin_win += element[1] * 2;
                 document.getElementById('balance-value').innerHTML = balance_value;
             }
-        } else if (active_bets[i][0] === 'BLACK') {
+        } else if (element[0] === 'BLACK') {
             if (BLACK.includes(parseInt(spin_result))) {
-                balance_value += active_bets[i][1] * 2;
-                spin_win += active_bets[i][1] * 2;
+                balance_value += element[1] * 2;
+                spin_win += element[1] * 2;
                 document.getElementById('balance-value').innerHTML = balance_value;
             }
-        } else if (active_bets[i][0] === 'EVEN') {
+        } else if (element[0] === 'EVEN') {
             if (spin_result % 2 === 0) {
-                balance_value += active_bets[i][1] * 2;
-                spin_win += active_bets[i][1] * 2;
+                balance_value += element[1] * 2;
+                spin_win += element[1] * 2;
                 document.getElementById('balance-value').innerHTML = balance_value;
             }
-        } else if (active_bets[i][0] === 'ODD') {
+        } else if (element[0] === 'ODD') {
             if (spin_result % 2 !== 0) {
-                balance_value += active_bets[i][1] * 2;
-                spin_win += active_bets[i][1] * 2;
+                balance_value += element[1] * 2;
+                spin_win += element[1] * 2;
                 document.getElementById('balance-value').innerHTML = balance_value;
             }
-        } else if (active_bets[i][0] === 'SINGLE-0') {
+        } else if (element[0] === 'SINGLE-0') {
             if (spin_result === '0') {
-                balance_value += active_bets[i][1] * 35;
-                spin_win += active_bets[i][1] * 35;
+                balance_value += element[1] * 35;
+                spin_win += element[1] * 35;
                 document.getElementById('balance-value').innerHTML = balance_value;
             }
-        } else if (active_bets[i][0] === 'DOUBLE-0') {
+        } else if (element[0] === 'DOUBLE-0') {
             if (spin_result === '00') {
-                balance_value += active_bets[i][1] * 35;
-                spin_win += active_bets[i][1] * 35;
+                balance_value += element[1] * 35;
+                spin_win += element[1] * 35;
                 document.getElementById('balance-value').innerHTML = balance_value;
             }
-        } else if (active_bets[i][0] === '1st ROW') {
+        } else if (element[0] === '1st ROW') {
             if (ROW_1.includes(spin_result)) {
-                balance_value += active_bets[i][1] * 3;
-                spin_win += active_bets[i][1] * 3;
+                balance_value += element[1] * 3;
+                spin_win += element[1] * 3;
                 document.getElementById('balance-value').innerHTML = balance_value;
             }
-        } else if (active_bets[i][0] === '2nd ROW') {
+        } else if (element[0] === '2nd ROW') {
             if (ROW_2.includes(spin_result)) {
-                balance_value += active_bets[i][1] * 3;
-                spin_win += active_bets[i][1] * 3;
+                balance_value += element[1] * 3;
+                spin_win += element[1] * 3;
                 document.getElementById('balance-value').innerHTML = balance_value;
             }
-        } else if (active_bets[i][0] === '3rd ROW') {
+        } else if (element[0] === '3rd ROW') {
             if (ROW_3.includes(spin_result)) {
-                balance_value += active_bets[i][1] * 3;
-                spin_win += active_bets[i][1] * 3;
+                balance_value += element[1] * 3;
+                spin_win += element[1] * 3;
                 document.getElementById('balance-value').innerHTML = balance_value;
             }
-        } else if (active_bets[i][0] === '1-18') {
+        } else if (element[0] === '1-18') {
             if (COL_1_18.includes(spin_result)) {
-                balance_value += active_bets[i][1] * 2;
-                spin_win += active_bets[i][1] * 2;
+                balance_value += element[1] * 2;
+                spin_win += element[1] * 2;
                 document.getElementById('balance-value').innerHTML = balance_value;
             }
-        } else if (active_bets[i][0] === '19-36') {
+        } else if (element[0] === '19-36') {
             if (COL_19_36.includes(spin_result)) {
-                balance_value += active_bets[i][1] * 2;
-                spin_win += active_bets[i][1] * 2;
+                balance_value += element[1] * 2;
+                spin_win += element[1] * 2;
                 document.getElementById('balance-value').innerHTML = balance_value;
             }
-        } else if (active_bets[i][0] === '1-12') {
+        } else if (element[0] === '1-12') {
             if (COL_1_12.includes(spin_result)) {
-                balance_value += active_bets[i][1] * 3;
-                spin_win += active_bets[i][1] * 3;
+                balance_value += element[1] * 3;
+                spin_win += element[1] * 3;
                 document.getElementById('balance-value').innerHTML = balance_value;
             }
-        } else if (active_bets[i][0] === '13-24') {
+        } else if (element[0] === '13-24') {
             if (COL_13_24.includes(spin_result)) {
-                balance_value += active_bets[i][1] * 3;
-                spin_win += active_bets[i][1] * 3;
+                balance_value += element[1] * 3;
+                spin_win += element[1] * 3;
                 document.getElementById('balance-value').innerHTML = balance_value;
             }
-        } else if (active_bets[i][0] === '25-36') {
+        } else if (element[0] === '25-36') {
             if (COL_25_36.includes(spin_result)) {
-                balance_value += active_bets[i][1] * 3;
-                spin_win += active_bets[i][1] * 3;
+                balance_value += element[1] * 3;
+                spin_win += element[1] * 3;
                 document.getElementById('balance-value').innerHTML = balance_value;
             }
-        } else if (active_bets[i][0] === spin_result) {
-            balance_value += active_bets[i][1] * 35;
-            spin_win += active_bets[i][1] * 35;
+        } else if (element[0] === spin_result) {
+            balance_value += element[1] * 35;
+            spin_win += element[1] * 35;
             document.getElementById('balance-value').innerHTML = balance_value;
         }
     }
@@ -220,16 +220,18 @@ function addToList(bet_type) {
 };
 
 function appendTable(bet_type) {
-    let table = document.getElementById('BETS-TABLE');
-    let row = table.insertRow(-1);
-    let cell1 = row.insertCell(0);
-    cell1.setAttribute('class', 'tg-uguq');
-    cell1.setAttribute('colspan', '2');
-    let cell2 = row.insertCell(1);
-    cell2.setAttribute('class', 'tg-uguq');
-    cell2.setAttribute('colspan', '2');
-    cell1.innerHTML = bet_type;
-    cell2.innerHTML = '$' + bet_value;
+    if (balance_value >= bet_value) {
+        let table = document.getElementById('BETS-TABLE');
+        let row = table.insertRow(-1);
+        let cell1 = row.insertCell(0);
+        cell1.setAttribute('class', 'tg-uguq');
+        cell1.setAttribute('colspan', '2');
+        let cell2 = row.insertCell(1);
+        cell2.setAttribute('class', 'tg-uguq');
+        cell2.setAttribute('colspan', '2');
+        cell1.innerHTML = bet_type;
+        cell2.innerHTML = '$' + bet_value;
+    }
 };
 
 function placeBet(bet_type) {
