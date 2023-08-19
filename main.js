@@ -40,13 +40,13 @@ function bet() {
     let spin_win = 0;
     for (let i = 0; i < active_bets.length; i++) {
         if (active_bets[i][0] === 'RED') {
-            if (RED.includes(spin_result)) {
+            if (RED.includes(parseInt(spin_result))) {
                 balance_value += active_bets[i][1] * 2;
                 spin_win += active_bets[i][1] * 2;
                 document.getElementById('balance-value').innerHTML = balance_value;
             }
         } else if (active_bets[i][0] === 'BLACK') {
-            if (BLACK.includes(spin_result)) {
+            if (BLACK.includes(parseInt(spin_result))) {
                 balance_value += active_bets[i][1] * 2;
                 spin_win += active_bets[i][1] * 2;
                 document.getElementById('balance-value').innerHTML = balance_value;
